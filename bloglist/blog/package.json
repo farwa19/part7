@@ -10,7 +10,7 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "test": "playwright test",
     "test:report": "playwright show-report",
-    "start:test": "cross-env NODE_ENV=test node --watch index.js",
+    "start:test": "cross-env NODE_ENV=test node index.js",
     "prepare": "husky"
   },
   "keywords": [],
