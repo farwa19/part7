@@ -17,7 +17,7 @@ jobs:
           node-version: 24
 
       - name: Install app dependencies
-        working-directory: bloglist
+        working-directory: bloglist/blog
         run: npm ci
 
       - name: Install test dependencies

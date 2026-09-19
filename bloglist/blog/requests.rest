@@ -1,0 +1,61 @@
+GET http://localhost:3002/api/blogs
+
+###
+
+POST http://localhost:3002/api/blogs
+Content-Type: application/json
+
+{
+   "username": "facj",
+  "password": "sekretpassword"
+}
+###
+
+POST http://localhost:3002/api/users
+Content-Type: application/json
+
+{
+  "username": "farwa",
+  "password": "sexs"
+}
+###
+###
+
+POST http://localhost:3002/api/login
+Content-Type: application/json
+
+{
+  "username": "farwa",
+  "password": "sexs"
+}
+#
+######
+### 1. Log in to get your token (Change password to your actual root password)
+POST http://localhost:3003/api/login
+Content-Type: application/json
+
+{
+  "username": "fsj",
+  "password": "sexs"
+}
+
+###
+
+POST http://localhost:3002/api/blogs/BLOG_ID/comments
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImZhcndhIiwiaWQiOiI2YWE4Mzk3MzVhNjczMGI3MTExOTQ2MTciLCJpYXQiOjE3ODk0MDk3MTIsImV4cCI6MTc4OTQxMzMxMn0.S8lC4DA8MwfMLoBELmGPrlh9D02_lPXjqk1gCdP4prs
+
+
+{
+  "comment": "Great article!"
+}
+###
+
+
+POST http://localhost:3002/api/blogs/6aa839f05a6730b711194618/comments
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImZhcndhIiwiaWQiOiI2YWE4Mzk3MzVhNjczMGI3MTExOTQ2MTciLCJpYXQiOjE3ODk0MTA1MDUsImV4cCI6MTc4OTQxNDEwNX0.2rUv2O_jzGBMtHkvU7pZL1ImirnB01pYMDDKcXID94M
+
+{
+  "comment": "This is a great blog!"
+}

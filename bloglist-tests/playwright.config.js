@@ -14,7 +14,7 @@ export default defineConfig({
   ],
   webServer: [
     {
-      command: 'set DNS_SERVER=192.168.0.1&& npm run start:test',
+      command: 'npm run start:test',
       cwd: '../bloglist/blog',
       url: 'http://localhost:3002/api/blogs',
       reuseExistingServer: !process.env.CI,
