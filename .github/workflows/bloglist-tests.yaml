@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-24.04
     env:
       TEST_MONGODB_URI: ${{ secrets.TEST_MONGODB_URI }}
+      SECRET: ${{ secrets.SECRET }}
     steps:
       - uses: actions/checkout@v5
 
@@ -33,6 +34,10 @@ jobs:
           fi
           if [[ ! "$TEST_MONGODB_URI" =~ ^mongodb(\+srv)?:// ]]; then
             echo "TEST_MONGODB_URI must start with mongodb:// or mongodb+srv://."
+            exit 1
+          fi
+          if [[ -z "$SECRET" ]]; then
+            echo "SECRET is not configured in repository secrets."
             exit 1
           fi
 
