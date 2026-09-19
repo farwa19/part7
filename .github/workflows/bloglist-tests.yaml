@@ -24,6 +24,18 @@ jobs:
         working-directory: bloglist-tests
         run: npm ci
 
+      - name: Validate test database secret
+        shell: bash
+        run: |
+          if [[ -z "$TEST_MONGODB_URI" ]]; then
+            echo "TEST_MONGODB_URI is not configured in repository secrets."
+            exit 1
+          fi
+          if [[ ! "$TEST_MONGODB_URI" =~ ^mongodb(\+srv)?:// ]]; then
+            echo "TEST_MONGODB_URI must start with mongodb:// or mongodb+srv://."
+            exit 1
+          fi
+
       - name: Install Playwright browsers
         working-directory: bloglist-tests
         run: npx playwright install --with-deps chromium
