@@ -4,7 +4,7 @@ import { BlogStore } from "./store";
 import blogService from "../service/blog";
 import persistentUser from "../service/persistentUser";
 import { Button, TextField } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 const Form = styled.form`
   display: flex;
   gap: 8px;
@@ -60,6 +60,12 @@ const Blog = ({
 }) => {
   const user = persistentUser.getUser();
   const navigate = useNavigate();
+  const [comment, setComment] = useState("");
+  const [comments, setComments] = useState(() => blog?.comments ?? []);
+
+  useEffect(() => {
+    setComments(blog?.comments ?? []);
+  }, [blog?.id, blog?.comments]);
 
   if (!blog) {
     return null;
@@ -67,7 +73,6 @@ const Blog = ({
   console.log(blog)
 
   const label = blog.important ? "make not important" : "make important";
-  const [comment, setComment] = useState("");
   const handleDelete = () => {
     if (window.confirm(`Delete blog "${blog.title}"?`)) {
       removeBlog(blog.id);
@@ -91,7 +96,7 @@ const Blog = ({
   console.log("adding comment:", comment);
 
   const updatedBlog = await blogService.addComment(blog.id, comment);
-  blog.comments = updatedBlog.comments;
+  setComments(updatedBlog.comments ?? []);
 
   setComment("");
 };
@@ -131,7 +136,7 @@ const Blog = ({
            <h1>Comments</h1>
 
 <ul>
-  {blog.comments?.map((comment, index) => (
+  {comments.map((comment, index) => (
     <li key={index}>{comment}</li>
   ))}
 </ul>
