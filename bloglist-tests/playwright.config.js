@@ -14,14 +14,14 @@ export default defineConfig({
   ],
   webServer: [
     {
-      command: 'npm run start:test',
-      cwd: '../bloglist/server',
-      url: 'http://localhost:3001/api/blogs',
+      command: 'set DNS_SERVER=192.168.0.1&& npm run start:test',
+      cwd: '../bloglist/blog',
+      url: 'http://localhost:3002/api/blogs',
       reuseExistingServer: !process.env.CI,
     },
     {
       command: 'npm run dev',
-      cwd: '../bloglist/client',
+      cwd: '../bloglist/blog',
       url: 'http://localhost:5173',
       reuseExistingServer: !process.env.CI,
     },

@@ -4,8 +4,8 @@ import { fileURLToPath } from 'url'
 import { test, expect } from '@playwright/test'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const srcDir = path.join(__dirname, '..', '..', 'bloglist', 'client', 'src')
-const persistentUserPath = path.join(srcDir, 'services', 'persistentUser.js')
+const srcDir = path.join(__dirname, '..', '..', 'bloglist', 'blog', 'src')
+const persistentUserPath = path.join(srcDir, 'service', 'persistentUser.js')
 
 const walk = dir =>
   fs.readdirSync(dir, { withFileTypes: true }).flatMap(entry => {

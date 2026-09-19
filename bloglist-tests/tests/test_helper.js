@@ -1,4 +1,4 @@
-const SERVER_URL = 'http://localhost:3001'
+const SERVER_URL = 'http://localhost:3002'
 
 export const resetDatabase = async request => {
   await request.post(`${SERVER_URL}/api/testing/reset`)
@@ -27,7 +27,7 @@ export const login = async (page, { username, password }) => {
   const inputs = page.locator('form input')
   await inputs.nth(0).fill(username)
   await inputs.nth(1).fill(password)
-  await page.getByRole('button', { name: 'login' }).click()
+  await page.locator('form').getByRole('button', { name: 'login' }).click()
   await page.getByRole('button', { name: 'logout' }).waitFor()
 }
 

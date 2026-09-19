@@ -14,10 +14,10 @@ npx playwright install --with-deps chromium
 npm test
 ```
 
-The config starts the backend (`../bloglist/server`, `npm run start:test`,
+The config starts the backend (`../bloglist/blog`, `npm run start:test`,
 `NODE_ENV=test` so `/api/testing/reset` is available) and the frontend
-(`../bloglist/client`, `npm run dev`) automatically. The backend needs a
-`TEST_MONGODB_URI` (see `bloglist/server/.env` locally, or the workflow env
+(`../bloglist/blog`, `npm run dev`) automatically. The backend needs a
+`TEST_MONGODB_URI` (see `bloglist/blog/.env` locally, or the workflow env
 in CI).
 
 ## Assumptions the tests make
