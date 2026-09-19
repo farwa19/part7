@@ -16,7 +16,7 @@ export default defineConfig({
     {
       command: 'npm run start:test',
       cwd: '../bloglist/blog',
-      url: 'http://localhost:3002/api/blogs',
+      url: 'http://localhost:3002/api/health',
       reuseExistingServer: !process.env.CI,
     },
     {

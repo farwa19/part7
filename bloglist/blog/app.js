@@ -43,9 +43,15 @@ app.use(userExtractor);
 
 // --- 2. DATABASE ---
 const mongoUrl = config.MONGODB_URI;
-mongoose.connect(mongoUrl, { family: 4 });
+mongoose
+  .connect(mongoUrl, { family: 4 })
+  .catch((error) => console.error("MongoDB connection failed:", error.message));
 
 // --- 3. ROUTERS ---
+app.get("/api/health", (request, response) => {
+  response.status(200).end();
+});
+
 app.use("/api/users", usersRouter);
 app.use("/api/login", loginRouter);
 
